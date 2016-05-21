@@ -10,6 +10,7 @@ update() {
 
 install() {
   git pull
+sudo apt-get install libreadline-dev libconfig-dev libssl-dev lua5.2 liblua5.2-dev lua-socket lua-sec lua-expat libevent-dev make unzip git redis-server autoconf g++ libjansson-dev libpython-dev expat libexpat1-dev
   git submodule update --init --recursive
   patch -i "patches/disable-python-and-libjansson.patch" -p 0 --batch --forward
   RET=$?;
