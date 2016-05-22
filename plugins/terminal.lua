@@ -51,13 +51,13 @@ function run(msg, matches)
     return "You aren't allowed!"
   end
   local receiver = get_receiver(msg)
-  if string.match(msg.text, '!sh') then
+  if string.match(msg.text, '/sh') then
     text = run_sh(msg)
     send_msg(receiver, text, ok_cb, false)
     return
   end
 
-  if string.match(msg.text, '!cpu') then
+  if string.match(msg.text, '/cpu') then
     text = run_bash('uname -snr') .. ' ' .. run_bash('whoami')
     text = text .. '\n' .. run_bash('top -b |head -2')
     send_msg(receiver, text, ok_cb, false)
@@ -73,6 +73,6 @@ end
 return {
     description = "shows cpuinfo", 
     usage = "!cpu",
-    patterns = {"^!cpu", "^!sh","^Get dialogs$"}, 
+    patterns = {"^/cpu", "^/sh","^Get dialogs$"}, 
     run = run 
 }
